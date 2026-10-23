@@ -1,1 +1,86 @@
-@import "tailwindcss"
+@import url('https://googleapis.com');
+@import "tailwindcss";
+
+
+
+
+@theme {
+  --color-cream: #faf1e2;
+  --color-cream-2: #f3e8d3;
+  --color-paper:#fffaf1;
+  --color-aubergine:#3a1f3d;
+  --color-aubergines:#4a2a4f;
+  --color-clay:#c9776a;
+  --color-clayark:#b5624f;
+  --color-ink:#3a1f3d;
+  --color-ink-soft:#8a7f8c;
+  --color-line:#e8ddc8;
+  --color-ok:#7d9b76;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  --font-cursive: "Great Vibes", cursive
+}
+
+@utility bg-now{
+  background: #282828;
+}
+
+
+/* Kills the default style */
+input[type="range"]{
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+/* Tracks the line */
+input[type="range"]::-webkit-slider-runnable-track{
+  background: var(--color-cream);
+  height: 6px;
+  border-radius: 999px;
+}
+
+input[type="range"]::-moz-range-track{
+  background: var(--color-cream);
+  height: 6px;
+  border-radius: 999px;
+}
+
+/* The Thumb style */
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: var(--color-clay);
+  border-radius: 50%;
+  margin-top: -2px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb{
+  width: 10px;
+  height: 10px;
+  background: var(--color-clay);
+  border-radius: 50%;
+  border: none;
+}
+
+/* Fill color- left side progress */
+input[type="range"]::-moz-range-progress{
+  background: var(--color-clay);
+  height: 6px;
+  border-radius: 999px;
+}
+
+/* .dark{
+  --cream:#241521;
+  --cream-2:#2f1c2c;
+  --paper:#2a1926;
+  --ink:#f3e8e2;
+  --ink-soft:#b7a6b4;
+  --line:#432f3f;
+  --aubergine:#1a0f19;
+  --aubergine-2:#241521;
+} */
