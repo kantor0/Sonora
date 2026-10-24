@@ -9,7 +9,7 @@ interface NavItem{
     icon: LucideIcon
 }
 
-const navItem: NavItem[] = [
+const navItems: NavItem[] = [
     {id: 1, path: "/", title: "Home", icon: Home},
     {id: 2, path: "/search", title: "Search", icon: Search},
     {id: 3, path: "/library", title: "Library", icon: LibraryBig},
@@ -29,7 +29,7 @@ export default function Sidebar(){
             {/* Nav Item */}
             <div className="mb-8 shrink-0">
                 <nav className="flex flex-col gap-2.5">
-                    {navItem.map((item)=>{
+                    {navItems.map((item)=>{
                         const Icon = item.icon;
                         const {id, path, title} = item
                         return (
@@ -46,8 +46,8 @@ export default function Sidebar(){
             
             {/* PlayList Part */}
             <div className="mb-10 flex-1 min-h-0 flex flex-col">
-                <div className="flex shrink-0 text-2xl font-bold text-aubergines gap-1 items-center">
-                    <span><DiscAlbum size={25} /></span>
+                <div className="flex shrink-0 text-lg font-bold text-aubergines gap-1 items-center justify-center">
+                    <span><DiscAlbum size={20} /></span>
                     <h2>Your PlayList</h2>
                 </div>
                     <div className="flex-1 min-h-0 overflow-y-auto">
@@ -56,7 +56,7 @@ export default function Sidebar(){
                 
             </div>
 
-            <div className="shrink-0 mt-auto bg-cream-2 left-1.5 right-1.5 rounded-xl p-5">
+            <div className="shrink-0 mt-auto bg-cream-2 rounded-xl p-5">
                 <div className="text-ink-soft text-[12px] py-2 flex gap-1.5 items-center">
                     <Sparkles size={20} />
                     <span className="">LISTENING ROOM</span>
