@@ -12,7 +12,7 @@ export default function RightSidebar(){
     const trackArtist = currentTrack?.artist;
     console.log(isPlaying)
     return(
-        <div className="text-white">
+        <div className="text-white h-full overflow-y-auto">
             {/* Now Playing Plus Queue */}
             <div className=" gap-6 flex justify-around p-5.5 text-lg font-semibold items-center mb-5.5">
                 <button className="cursor-pointer"><ChevronRight /></button>
@@ -35,8 +35,8 @@ export default function RightSidebar(){
             <div className="flex items-center justify-between p-2">
                 {/* Song Name and Artist */}
                 <div>
-                    <p className="text-md font-bold text-cream-2 font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
-                    <p className="text-sm font-sans text-cream-2">{trackArtist ? trackArtist : "Select a song to start"}</p>
+                    <p className="text-md font-bold text-white font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
+                    <p className="text-sm font-sans text-white">{trackArtist ? trackArtist : "Select a song to start"}</p>
                 </div>
                 <button className="cursor-pointer"><Heart /></button>
             </div>
@@ -55,7 +55,7 @@ export default function RightSidebar(){
             </div>
 
             {/* Volume */}
-            <div className="mt-3.5 flex items-center justify-around gap-1.5 px-1">
+            <div className="mt-3.5 flex items-center justify-around gap-1.5 px-2 overflow-hidden">
                 <VolumeIcon volume={volume} />
                 <VolumeBar />
             </div>

@@ -5,13 +5,19 @@ import { BrowserRouter } from "react-router-dom";
 import PlayerProvider from './components/contexts/PlayerProvider.tsx';
 import UserProvider from './components/contexts/UserProvider.tsx';
 import App from './App.tsx'
+import ToastProvider from './components/contexts/ToastProvider.tsx';
+import SettingsProvider from './components/contexts/SettingsProvider.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <PlayerProvider>
         <UserProvider>
-          <App />
+            <ToastProvider>
+          <SettingsProvider>
+              <App />
+          </SettingsProvider>
+            </ToastProvider>
         </UserProvider>
       </PlayerProvider>
     </BrowserRouter>

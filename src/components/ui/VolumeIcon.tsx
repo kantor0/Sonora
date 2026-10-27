@@ -5,7 +5,7 @@ interface VolumeProps {
 }
 
 export default function VolumeIcon({volume}: VolumeProps){
-    if(volume === 0) return <VolumeX />
-    if(volume <= 0.5) return <Volume1 />
-    return <Volume2 />
+    if(volume === 0) return <VolumeX />;
+    if(volume <= 0.6) return <Volume1 />;
+    return <Volume2 />;
 }

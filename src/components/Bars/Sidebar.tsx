@@ -1,6 +1,7 @@
 import { Home, Search, LibraryBig, Settings, DiscAlbum, Sparkles, UserRound } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { useSettings } from "../hooks/useSettings";
 
 interface NavItem{
     id: number,
@@ -18,6 +19,8 @@ const navItems: NavItem[] = [
 ]
 
 export default function Sidebar(){
+    const {settings} = useSettings();
+    const {theme} = settings
     return (
         <div className="py-5 px-5 flex flex-col h-full">
             {/* Brand Header */}
@@ -46,7 +49,7 @@ export default function Sidebar(){
             
             {/* PlayList Part */}
             <div className="mb-10 flex-1 min-h-0 flex flex-col">
-                <div className="flex shrink-0 text-lg font-bold text-aubergines gap-1 items-center justify-center">
+                <div className={`flex shrink-0 text-lg font-bold ${theme === "light" ? "text-aubergines" : "text-white"} gap-1 items-center justify-center`}>
                     <span><DiscAlbum size={20} /></span>
                     <h2>Your PlayList</h2>
                 </div>
@@ -56,12 +59,12 @@ export default function Sidebar(){
                 
             </div>
 
-            <div className="shrink-0 mt-auto bg-cream-2 rounded-xl p-5">
+            <div className="shrink-0 mt-auto bg-cream-2 rounded-xl p-3.5">
                 <div className="text-ink-soft text-[12px] py-2 flex gap-1.5 items-center">
                     <Sparkles size={20} />
                     <span className="">LISTENING ROOM</span>
                 </div>
-                <p className="text-aubergines font-semibold">Find your next favorite through someone else.</p>
+                <p className={`${theme === "light" ? "text-aubergines" : "text-white"} font-semibold px-2`}>Find your next favorite through someone else.</p>
             </div>
         </div>
     )

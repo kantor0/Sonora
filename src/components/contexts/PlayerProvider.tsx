@@ -3,7 +3,6 @@ import { PlayerContext } from './PlayerContext';
 import type { Track, PlayerProviderProps } from './PlayerContext';
 
 
-console.log("Hello")
 export default function PlayerProvider({children}: PlayerProviderProps){
     const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);

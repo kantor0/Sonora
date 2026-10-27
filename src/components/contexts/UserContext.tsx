@@ -9,7 +9,9 @@ export interface User{
     id: string,
     username: string,
     displayName: string,
-    avatarUrl: string | null
+    avatarUrl: string | null,
+    favoriteArtist?: string[],
+    moods?: string[]
 }
 
 export interface UserProviderProps{

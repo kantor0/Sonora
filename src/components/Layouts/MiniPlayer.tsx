@@ -21,9 +21,9 @@ export default function MiniPlayer(){
                             <Music size={20} className="text-neutral-400" />
                         )}
                     </div>
-                    <div>
-                        <p className="text-sm font-bold text-cream-2 font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
-                        <p className="text-sm font-sans text-cream-2">{trackArtist ? trackArtist : "Select a song to start"}</p>
+                    <div className="space-y-1.5">
+                        <p className="text-md font-bold text-white font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
+                        <p className="text-sm font-sans text-white">{trackArtist ? trackArtist : "Select a song to start"}</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
