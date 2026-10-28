@@ -22,7 +22,7 @@ export default function Welcome(){
              {/* RIGHT AUTH VIEW */}
 
              <div className="custom-scrollbar bg-cream py-14 px-14 flex flex-col justify-between overflow-y-auto">
-                {isTerms ? <Terms handleClick={handleClick}  /> : <RightAuthView handleTerms={handleClick} />}
+                {isTerms ? <Terms handleclick={handleClick} useInternal={false} /> : <RightAuthView handleTerms={handleClick} />}
              </div>
         </div>
     )

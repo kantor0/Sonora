@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 } */
 
 export default function Topbar(){
-    const {unreadCount} = useNotifications()
+    const {hasNew} = useNotifications()
     const navigate = useNavigate();
     const { user } = useUser()
     const now = new Date()
@@ -23,7 +23,7 @@ export default function Topbar(){
         day: "numeric"
     });
     const formattedDate: string = formatter.format(now)
-    const name = user ? user.displayName?.split(" ")[0] : "Guest";
+    const name = user?.displayName?.split(" ")[0];
     const greeting = Greeting() + " " + name;
 
     const handleClickToNotification = () => {
@@ -40,7 +40,7 @@ export default function Topbar(){
             <div className="gap-5 flex items-center">
                 <span className="relative cursor-pointer" onClick={handleClickToNotification}>
                     <Bell className="text-ink-soft" />
-                    {unreadCount > 0 && (
+                    {hasNew && (
                         <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-600" />
                     )}
                 </span>

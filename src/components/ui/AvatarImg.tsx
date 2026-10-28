@@ -33,11 +33,12 @@ export default function AvatarImg( {size = "sm", clickable = false, className=""
     const name = user ? user.displayName?.split(" ")[0] : "Guest";
     const avatarLink = user?.avatarUrl
     const hasAvatar = !!avatarLink
+    
     return (
         <>
             <div className={`${sizes[size]} flex items-center justify-center rounded-full border-line bg-cream-2 text-clayark border overflow-hidden cursor-pointer ${className}`} onClick={handleClick}>
                 {hasAvatar ? 
-                <img src={avatarLink} className="rounded-full object-cover" alt={name} />
+                <img src={avatarLink} className=" w-full h-full rounded-full object-cover" alt={name} />
                 : 
                 <div className="grid place-items-center ">{name.slice(0,2).toUpperCase()}</div>
                 }

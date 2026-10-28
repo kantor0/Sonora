@@ -32,15 +32,15 @@ export default function Layout(){
                     <MiniPlayer />
                 </div>
                 
+                <div className="shrink-0 md:hidden bg-paper">
+                    <Mobilebar />
+                </div>
             </main>
 
             <aside className="hidden md:block border-l border-[#1a0f19]/90 overflow-hidden h-screen bg-gray-900 ">{/* [#1a0f19]/90 */}
                 <RightSidebar />
             </aside>
 
-            <div className="md:hidden">
-                <Mobilebar />
-            </div>
         </div>
     )
 }

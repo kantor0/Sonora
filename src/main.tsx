@@ -11,15 +11,15 @@ import SettingsProvider from './components/contexts/SettingsProvider.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <PlayerProvider>
-        <UserProvider>
-            <ToastProvider>
+      <ToastProvider>
+        <PlayerProvider>
+          <UserProvider>
           <SettingsProvider>
               <App />
           </SettingsProvider>
-            </ToastProvider>
-        </UserProvider>
-      </PlayerProvider>
+          </UserProvider>
+        </PlayerProvider>
+      </ToastProvider>
     </BrowserRouter>
   </StrictMode>,
 )

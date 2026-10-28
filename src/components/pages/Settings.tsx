@@ -1,4 +1,4 @@
-import { ChevronLeft, Camera } from "lucide-react";
+import { ChevronLeft, Camera, ShieldAlert, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import{ useRef } from "react";
 import { useUser } from "../hooks/useUser";
@@ -38,11 +38,12 @@ const playbackFeatures: FeaturesType[] = [
 
 export default function Settings(){
     const navigate = useNavigate();
-    const {showToast} = useToast()
+    const {showToast, clearNotifications} = useToast()
     const { handleAvatarUrl, user, setUser } = useUser();
     const FileInputRef = useRef<HTMLInputElement>(null);
     const { settings, updateSetting, resetSettings, isDefault } = useSettings();
     const {theme} = settings;
+    const dialogRef = useRef<HTMLDialogElement>(null);
 
     const navigateToProfile = () =>{
         navigate("/profile")
@@ -53,6 +54,20 @@ export default function Settings(){
             FileInputRef.current?.click()
         }
     };
+
+    const closeDialog = () => {
+        dialogRef.current?.close()
+    }
+
+    const showDialog = () => {
+        dialogRef.current?.showModal();
+    }
+
+    const deleteAccount = () => {
+        localStorage.clear();
+        clearNotifications()
+        setUser(null);
+    }
 
     const handleSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
@@ -84,13 +99,16 @@ export default function Settings(){
             return;
         }
 
+        
+
         setUser((prev) => prev ? {...prev, ...updatedUser} : prev );
         const title = changed.length === 2 ? "Username and display name changed" : `${labels[changed[0]]} changed`;
-        const description = changed.map((field) => `${labels[field]} changed from "${user[field]}" to "${updatedUser[field]}".`).join(" ");
+        const description = changed.map((field) => `${labels[field]} changed from "${user[field]}" to "${updatedUser[field]}".`).join("\n");
         showToast({
             title,
             description,
-            kind: "saved"
+            kind: "saved",
+            persist: true
         })
     }
 
@@ -134,7 +152,7 @@ export default function Settings(){
                 <div className="space-y-5">
                     <InputField label="Display name" name="displayName" defaultValue={user?.displayName} className="font-semibold" textColor={`${theme === "light" ? "text-aubergine" : "text-white"}`} />
                     <InputField label="Username" name="username" defaultValue={user?.username} className="font-semibold" textColor={`${theme === "light" ? "text-aubergine" : "text-white"}`} />
-                    <InputField label="User ID" defaultValue={user?.id} disabled className="text-ink-soft" textColor={`${theme === "light" ? "text-aubergine" : "text-white"}`} />
+                    <InputField label="User ID" defaultValue={`SNA_${user?.id.slice(0, 6)}`} disabled className="text-ink-soft" textColor={`${theme === "light" ? "text-aubergine" : "text-white"}`} />
                     
                 </div>
                 <div>
@@ -181,10 +199,10 @@ export default function Settings(){
                 </div>
             </div>
 
-            {/* Privacy Policy */}
+            {/* PRIVACY & POLICY */}
             <div className="bg-paper border border-line rounded-xl p-6 mb-5 space-y-6">
                 <h2 className={`${theme === "light" ? "text-aubergine" : "text-white"} font-semibold font-grotesk text-lg mb-4 border-b pb-1.5 border-line`}>Privacy & data</h2>
-                <div className="border-b border-line pb-3 flex items-center justify-between">
+                <div className="border-b border-line flex-wrap pb-3 flex items-center justify-between">
                     <div>
                         <h3 className={`${theme === "light" ? "text-aubergine" : "text-white"} font-semibold font-grotesk text-md`}>Data & storage</h3>
                         <p className="text-sm text-ink-soft">2.4 GB of 8 GB used for downloads and cache</p>
@@ -192,7 +210,7 @@ export default function Settings(){
                     <button className=" py-1.5 px-7 font-semibold text-md cursor-pointer bg-cream-2 text-clayark rounded-lg mt-2" type="button">Clear data</button>
                 </div>
 
-                <div className="border-b border-line pb-3 flex items-center justify-between">
+                <div className="border-b border-line flex-wrap pb-3 flex items-center justify-between">
                     <div>
                         <h3 className={`${theme === "light" ? "text-aubergine" : "text-white"} font-semibold font-grotesk text-md`}>Privacy policy</h3>
                         <p className="text-sm text-ink-soft">How Sonora handles your listening & user data</p>
@@ -200,7 +218,15 @@ export default function Settings(){
                     <button className=" py-1.5 px-7 font-semibold text-md cursor-pointer bg-cream-2 text-clayark rounded-lg mt-2" type="button">View privacy policy</button>
                 </div>
 
-                <div className="flex items-center justify-between">
+                <div className="border-b border-line flex-wrap pb-3 flex items-center justify-between">
+                    <div>
+                        <h3 className={`${theme === "light" ? "text-aubergine" : "text-white"} font-semibold font-grotesk text-md`}>Terms & Conditions</h3>
+                        <p className="text-sm text-ink-soft">Read about our terms and conditions</p>
+                    </div>
+                    <button onClick={()=> navigate("/terms")}  className=" py-1.5 px-7 font-semibold text-md cursor-pointer bg-cream-2 text-clayark rounded-lg mt-2" type="button">View Terms & conditions</button>
+                </div>
+
+                <div className="flex items-center flex-wrap justify-between">
                     <div>
                         <h3 className={`${theme === "light" ? "text-aubergine" : "text-white"} font-semibold font-grotesk text-md`}>Reset Settings</h3>
                         <p className="text-sm text-ink-soft">Change your Settings back to default</p>
@@ -222,14 +248,37 @@ export default function Settings(){
                     }}>Reset</button>
                 </div>
             </div>
+{/* ------------------------------------------------------------------------------------------------------------------------- */}
 
+            {/* ACCOUNT ACCOUNTS */}
+            <div className="bg-paper border border-line rounded-xl p-6 mb-5 space-y-6">
+                <h2 className={`${theme === "light" ? "text-aubergine" : "text-white"} font-semibold font-grotesk text-lg mb-4 pb-1.5`}>Account actions</h2>
+                <div className="border-b border-line pb-3 flex flex-wrap items-center justify-between">
+                    <div>
+                        <h3 className={`${theme === "light" ? "text-red-800" : "text-red-500"} font-semibold font-grotesk text-md`}>Delete Account</h3>
+                        <p className="text-sm text-ink-soft">Permanently delete your account and all associated data. This action cannot be undone.</p>
+                    </div>
+                    <button className=" py-1.5 px-7 font-semibold text-md cursor-pointer bg-cream-2 text-clayark rounded-lg mt-2" type="button" onClick={showDialog}>Delete Account</button>
+                </div>
+                <dialog ref={dialogRef} className="m-auto w-[90vw] max-w-md rounded-2xl bg-paper p-6 text-ink backdrop:black/50" onClick={(e) => { if(e.target === e.currentTarget) closeDialog()}}>
+                    <div className="flex items-center justify-between">
+                        <ShieldAlert />
+                        <button onClick={closeDialog} className="cursor-pointer"><X /></button>
+                    </div>
+                    <h1 className="text-red-500 text-xl text-center font-bold">Delete your Account</h1>
+                    <p className="text-center">Are you sure you want to Delete your account. You will lose all your data.</p>
+                    <div className="flex items-center justify-evenly mt-2.5">
+                        <button className=" py-2 px-7.5 font-semibold text-md cursor-pointer bg-aubergine text-white rounded-md" type="button" onClick={deleteAccount}>Yes</button>
+                        <button className=" py-2 px-7.5 font-semibold text-md cursor-pointer bg-cream-2 text-clayark rounded-md" type="button" onClick={closeDialog}>No</button>
+                    </div>
+                </dialog>
+            </div>
+{/* -------------------------------------------------------------------------------------------------------------------- */}
             <div className="text-center m-4">
                 <p className="text-sm text-ink-soft">About Sonora: v1.1.34 ~ Created by Kantoro</p>
-            </div>
-
-            
+            </div>  
             <div>
-                
+
             </div>
         </div>
     )

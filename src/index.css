@@ -16,6 +16,7 @@
   --color-ink-soft:#8a7f8c;
   --color-line:#e8ddc8;
   --color-ok:#7d9b76;
+  --color-nav: #3a1f3d;
   --font-grotesk: "Space Grotesk", sans-serif;
   --font-cursive: "Great Vibes", cursive;
   --animate-toast-in: toast-in 250ms ease-out;
@@ -98,4 +99,5 @@
   --color-line:#432f3f;
   --color-aubergine:#1a0f19;
   --color-aubergine-2:#241521;
+  --color-nav: #fff
 }

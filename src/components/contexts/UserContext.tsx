@@ -1,7 +1,3 @@
-
-
-
-
 import { createContext } from 'react';
 import type { ChangeEvent, ReactNode, Dispatch, SetStateAction } from 'react';
 
@@ -11,7 +7,9 @@ export interface User{
     displayName: string,
     avatarUrl: string | null,
     favoriteArtist?: string[],
-    moods?: string[]
+    moods?: string[],
+    genre?: string[],
+    createdAt: number
 }
 
 export interface UserProviderProps{

@@ -9,6 +9,8 @@ import Notification from "./components/pages/Notification";
 import {useUser} from "./components/hooks/useUser";
 import { useSettings } from "./components/hooks/useSettings";
 import Welcome from "./components/pages/Welcome";
+import Terms from "./components/pages/Terms";
+import GettingStarted from "./components/pages/GettingStarted";
 
 
 export default function App(){
@@ -26,6 +28,8 @@ export default function App(){
                 <Route path="library" element={<Library />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/notification" element={<Notification />} />
+                <Route path="/terms" element={ <Terms />} />
+                <Route path="/getting-started" element={<GettingStarted />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>

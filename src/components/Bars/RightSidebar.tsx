@@ -10,7 +10,6 @@ export default function RightSidebar(){
     const imageSrc = currentTrack?.thumbnail;
     const trackTitle = currentTrack?.title;
     const trackArtist = currentTrack?.artist;
-    console.log(isPlaying)
     return(
         <div className="text-white h-full overflow-y-auto">
             {/* Now Playing Plus Queue */}

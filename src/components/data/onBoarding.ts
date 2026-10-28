@@ -65,3 +65,128 @@ export const ARTISTS: string[] = [
     "Tupac Shakur",
     "Mac Miller"
 ];
+
+
+export const MOODS: string[] = [
+  // --- High Energy & Uplifting ---
+  "Energetic",
+  "Happy",
+  "Uplifting",
+  "Hype",
+  "Motivated",
+  "Confident",
+  "Joyful",
+  "Euphoric",
+  "Excited",
+  "Optimistic",
+
+  // --- Chill & Relaxing ---
+  "Chill",
+  "Relaxed",
+  "Calm",
+  "Mellow",
+  "Peaceful",
+  "Dreamy",
+  "Serene",
+  "Laid-back",
+  "Cozy",
+  "Ambient",
+
+  // --- Focus & Productivity ---
+  "Focused",
+  "Productive",
+  "Studious",
+  "Deep Focus",
+  "Zen",
+  "Mindful",
+
+  // --- Emotional & Melancholic ---
+  "Sad",
+  "Melancholic",
+  "Emotional",
+  "Heartbroken",
+  "Gloomy",
+  "Somber",
+  "Bittersweet",
+  "Lonely",
+  "Nostalgic",
+  "Sentimental",
+
+  // --- Dark & Intense ---
+  "Dark",
+  "Moody",
+  "Brooding",
+  "Aggressive",
+  "Angry",
+  "Rebellious",
+  "Intense",
+  "Mysterious",
+
+  // --- Romance & Sensual ---
+  "Romantic",
+  "Sensual",
+  "Intimate",
+  "Passionate",
+  "Dreamy Romance",
+
+  // --- Party & Social ---
+  "Party",
+  "Groovy",
+  "Funky",
+  "Trippy",
+  "Hypnotic",
+  "Feelin' Good"
+];
+
+export const GENRE: string[] = [
+  "Pop",
+  "Hip Hop",
+  "Rap",
+  "Rock",
+  "Electronic Dance Music",
+  "Rhythm and Blues",
+  "Country",
+  "Reggaeton",
+  "K-Pop",
+  "Latin Pop",
+  "Indie Rock",
+  "Alternative Rock",
+  "Afrobeats",
+  "Trap",
+  "Lo-Fi Beats",
+  "Deep House",
+  "Techno",
+  "Synthwave",
+  "Heavy Metal",
+  "Punk Rock",
+  "Jazz",
+  "Blues",
+  "Soul",
+  "Funk",
+  "Disco",
+  "Reggae",
+  "Dancehall",
+  "Salsa",
+  "Bachata",
+  "Gospel",
+  "Classical",
+  "Ambient",
+  "Folk",
+  "Acoustic",
+  "Grunge",
+  "Emo",
+  "J-Pop",
+  "Phonk",
+  "Hyperpop",
+  "Drill",
+  "Grime",
+  "Dubstep",
+  "Drum and Bass",
+  "Progressive House",
+  "Chiptune",
+  "Ska",
+  "Bluegrass",
+  "Americana",
+  "New Wave",
+  "Psychedelic Rock"
+]

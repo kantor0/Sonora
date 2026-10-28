@@ -1,8 +1,3 @@
-
-
-
-
-
 import { ScrollText, Check } from "lucide-react";
 interface AuthWelcomeStepType{
     onNext: () => void

@@ -1,7 +1,3 @@
-
-
-
-
 import { useContext } from "react";
 import { ToastContext } from "../contexts/ToastContext";
 
@@ -12,6 +8,6 @@ export function useToast(){
 };
 
 export function useNotifications(){
-    const {notifications, clearNotifications, markRead, markAllRead, unreadCount} = useToast();
-    return {notifications, clearNotifications, markRead, markAllRead, unreadCount}
+    const {notifications, clearNotifications, markRead, markAllRead, unreadCount, toggleRead, togglePin, deleteNotification, hasNew, markBellSeen} = useToast();
+    return {notifications, clearNotifications, markRead, markAllRead, unreadCount, toggleRead, togglePin, deleteNotification, hasNew, markBellSeen}
 }

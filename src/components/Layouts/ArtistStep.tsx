@@ -1,26 +1,25 @@
-
-
 import { ChevronLeft } from "lucide-react";
-import { useState } from "react";
 import { ARTISTS } from "../data/onBoarding";
 import { useToast } from "../hooks/useToast";
 
 interface ArtistStepProps{
+    selected: string[]
+    onChange: (selected: string[]) => void, 
     onBack: () => void
-    onNext: (selected: string[]) => void; 
+    onNext: () => void; 
+    onSkip: () => void
 }
 
-export default function ArtistStep({onBack, onNext}: ArtistStepProps){
-    const [selected, setSelected] = useState<string[]>([]);
+export default function ArtistStep({onBack, onNext, onSkip, onChange, selected}: ArtistStepProps){
     const { showToast } = useToast()
     const toggle = (name: string) =>{
-        setSelected(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name])
+        onChange(selected.includes(name) ? selected.filter(n => n !== name) : [...selected, name])
     }
     const resetSelected = () => {
         if(!selected.length){
             return showToast({title: "Selection is already cleared", kind: "info"})
         }
-        setSelected([]);
+        onChange([]);
         showToast({title: "Restted selection", kind: "info"})
     }
     return (
@@ -46,8 +45,8 @@ export default function ArtistStep({onBack, onNext}: ArtistStepProps){
                 })}
             </div>
             <div className="flex justify-center flex-col space-y-3 mb-3">
-                <button type="button" onClick={ () => onNext(selected)} className="rounded-xl cursor-pointer bg-aubergine px-8 py-3 font-bold text-lg font-grotesk text-white w-full">Next</button>
-                <button type="button" onClick={() => onNext([])} className="text-ink-soft cursor-pointer text-lg font-bold font-grotesk">Skip →</button>
+                <button type="button" onClick={onNext} className="rounded-xl cursor-pointer bg-aubergine px-8 py-3 font-bold text-lg font-grotesk text-white w-full">Next</button>
+                <button type="button" onClick={onSkip} className="text-ink-soft cursor-pointer text-lg font-bold font-grotesk">Skip →</button>
             </div>
         </div>
     )
