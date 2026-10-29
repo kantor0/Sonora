@@ -7,6 +7,7 @@ export interface Track{
     artist: string,
     thumbnail: string | null,
     audioUrl: string,
+    genre?: string
 };
 
 export interface PlayerProviderProps{

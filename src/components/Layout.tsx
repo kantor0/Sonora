@@ -41,7 +41,7 @@ export default function Layout(){
                 </div>
             </main>
 
-            <button type="button" onClick={() => setIsRightOpen((v) => !v)} aria-expanded={isRightOpen} aria-label={isRightOpen ? "Close sidebar" : "Open sidebar"} className={`fixed top-6 text-ink z-30 hidden md:flex transition-[right] duration-300 ${isRightOpen ? "right-[220px]" : "right-0"}`}>
+            <button type="button" onClick={() => setIsRightOpen((v) => !v)} aria-expanded={isRightOpen} aria-label={isRightOpen ? "Close sidebar" : "Open sidebar"} className={`fixed top-6 text-red-400 z-30 hidden md:flex transition-[right] duration-300 ${isRightOpen ? "right-[220px]" : "right-2"}`}>
                 <ChevronRight size={28} className={`transition-transform cursor-pointer duration-300 ${isRightOpen ? "" : "rotate-180"}`} />
             </button>
 

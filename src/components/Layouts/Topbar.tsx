@@ -37,7 +37,7 @@ export default function Topbar(){
                 <span className="text-ink-soft font-grotesk">{formattedDate} / </span> <span className="font-semibold">{greeting}</span>
             </div>
 
-            <div className="gap-5 flex items-center">
+            <div className="gap-5 flex items-center pr-5">
                 <span className="relative cursor-pointer" onClick={handleClickToNotification}>
                     <Bell className="text-ink-soft" />
                     {hasNew && (

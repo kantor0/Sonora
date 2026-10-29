@@ -24,20 +24,18 @@ export default function Mobilebar(){
                     const Icon = item.icon;
                     const {id, path, title} = item
                     return (
-                        <NavLink key={id} to={path} className={({isActive}) => `flex gap-2 items-center font-semibold text-md ${isActive ? "text-ink-soft" : "text-nav"}`}>
-                            {({isActive}) => (
+                        <NavLink key={id} to={path} className={({isActive}) => `flex gap-2 items-center font-semibold text-md ${isActive ? "text-clay" : "text-ink-soft"}`}>
                                 <div className="space-y-1 flex flex-col items-center">
-                                    <Icon fill={isActive ? "#8a7f8c" : "none"} strokeWidth={2} size={30}/>
-                                    <p className="text-nav">{title}</p>
+                                    <Icon size={21}/>
+                                    <p className="text-[15px]">{title}</p>
                                 </div>
-                            )}
                         
                         </NavLink>
                     )
                 })}
                 <div className="space-y-1 flex flex-col items-center">
-                    <Plus size={30} className="text-nav"/>
-                    <p className="text-nav font-semibold text-md">Create</p>
+                    <Plus size={21} className="text-nav"/>
+                    <p className="text-nav text-[15px]">Create</p>
                 </div>
             </nav>
         </div>

@@ -30,11 +30,11 @@ export default function RightSidebar(){
             </div>
             
             {/* Info */}
-            <div className="flex items-center justify-between p-2">
+            <div className="flex items-center min-w-0 justify-between p-2">
                 {/* Song Name and Artist */}
-                <div>
-                    <p className="text-md font-bold truncate text-white font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
-                    <p className="text-sm font-sans text-white">{trackArtist ? trackArtist : "Select a song to start"}</p>
+                <div className="min-w-0">
+                    <p className="text-md block font-bold truncate text-white font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
+                    <p className="text-sm block truncate font-sans text-white">{trackArtist ? trackArtist : "Select a song to start"}</p>
                 </div>
                 <button className="cursor-pointer"><Heart /></button>
             </div>
