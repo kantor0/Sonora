@@ -6,7 +6,7 @@ import SeekBar from "../player/SeekBar";
 
 
 export default function MiniPlayer(){
-    const { currentTrack, isPlaying } = usePlayer()
+    const { currentTrack, isPlaying, togglePlay } = usePlayer()
     const imageSrc = currentTrack?.thumbnail;
     const trackTitle = currentTrack?.title;
     const trackArtist = currentTrack?.artist;
@@ -28,7 +28,7 @@ export default function MiniPlayer(){
                 </div>
                 <div className="flex items-center gap-2">
                     <button className="cursor-pointer"><Heart size={20} className="text-white" /></button>
-                    <button className="w-9 h-9 rounded-full cursor-pointer grid place-items-center bg-clay text-white">{!isPlaying ? <Play /> : <Pause />}</button>
+                    <button className="w-9 h-9 rounded-full cursor-pointer grid place-items-center bg-clay text-white" onClick={togglePlay}>{!isPlaying ? <Play /> : <Pause />}</button>
                 </div>
             </div>
             <div className="px-1">

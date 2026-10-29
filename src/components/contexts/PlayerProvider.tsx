@@ -68,7 +68,7 @@ export default function PlayerProvider({children}: PlayerProviderProps){
         };
     }
 
-    const  prevTrack = () =>{
+    const prevTrack = () =>{
         const previousTrack = currentIndex -1;
         if(previousTrack < 0) return;
         setCurrentIndex(previousTrack);
@@ -77,14 +77,21 @@ export default function PlayerProvider({children}: PlayerProviderProps){
 
     const nextTrack = () => {
         const next = currentIndex + 1;
-        if(next >= queue.length) return;
+        if(next >= queue.length){
+            setIsPlaying(false);
+            if(audioRef.current){
+                audioRef.current.currentTime = 0
+                audioRef.current.pause()
+            }
+            return;
+        }
         setCurrentIndex(next);
         startTrack(queue[next]);
     }
 
     return(
         <PlayerContext.Provider value={{currentTrack, audioRef, isPlaying, recentlyPlayed, playTrack, togglePlay, nextTrack, prevTrack, queue, currentIndex, volume, setVolume}}>
-            <audio ref={audioRef} />
+            <audio ref={audioRef} onEnded={nextTrack} />
             {children}
         </PlayerContext.Provider>
     )

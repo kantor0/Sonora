@@ -1,21 +1,20 @@
 
-import { ChevronRight, ListPlus, Heart, SkipBack, Play, SkipForward, Music, Pause } from "lucide-react";
+import { ListPlus, Heart, SkipBack, Play, SkipForward, Music, Pause } from "lucide-react";
 import { usePlayer } from "../hooks/usePlayer";
 import SeekBar from "../player/SeekBar";
 import VolumeBar from "../player/VolumeBar";
 import VolumeIcon from "../ui/VolumeIcon";
 
 export default function RightSidebar(){
-    const { volume, currentTrack, isPlaying } = usePlayer()
+    const { volume, currentTrack, isPlaying, togglePlay, prevTrack, nextTrack } = usePlayer()
     const imageSrc = currentTrack?.thumbnail;
     const trackTitle = currentTrack?.title;
     const trackArtist = currentTrack?.artist;
     return(
         <div className="text-white h-full overflow-y-auto">
             {/* Now Playing Plus Queue */}
-            <div className=" gap-6 flex justify-around p-5.5 text-lg font-semibold items-center mb-5.5">
-                <button className="cursor-pointer"><ChevronRight /></button>
-                <p> Now Playing </p>
+            <div className="ml-6 gap-6 flex justify-center p-5.5 text-lg font-semibold items-center mb-5.5">
+                <p className="text-center"> Now Playing </p>
                 <button className="cursor-pointer"><ListPlus /></button>
             </div>
 
@@ -34,23 +33,23 @@ export default function RightSidebar(){
             <div className="flex items-center justify-between p-2">
                 {/* Song Name and Artist */}
                 <div>
-                    <p className="text-md font-bold text-white font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
+                    <p className="text-md font-bold truncate text-white font-grotesk">{trackTitle ? trackTitle : "Not Playing"}</p>
                     <p className="text-sm font-sans text-white">{trackArtist ? trackArtist : "Select a song to start"}</p>
                 </div>
                 <button className="cursor-pointer"><Heart /></button>
             </div>
 
             {/* progress Bar */}
-            <div className="mb-3 px-1">
+            <div className="mb-3 px-1" >
                 {/* <input type="range" value="0" className="w-full accent-ink"/> */}
                 <SeekBar showTimes />
             </div>
 
             {/* Audio Buttons */}
             <div className="flex justify-around items-center text-gray-300">
-                <button className="font-extrabold cursor-pointer"><SkipBack /></button>
-                <button className="w-12 h-12 rounded-full cursor-pointer grid place-items-center bg-white text-gray-700">{!isPlaying ? <Play /> : <Pause />}</button>
-                <button className="cursor-pointer"><SkipForward /></button>
+                <button className="font-extrabold cursor-pointer" onClick={prevTrack}><SkipBack /></button>
+                <button className="w-12 h-12 rounded-full cursor-pointer grid place-items-center bg-white text-gray-700" onClick={togglePlay}>{!isPlaying ? <Play /> : <Pause />}</button>
+                <button className="cursor-pointer" onClick={nextTrack}><SkipForward /></button>
             </div>
 
             {/* Volume */}

@@ -9,7 +9,7 @@ interface Props{
 export default function Progress({ value, onChange, label, className="", fillClassName= "bg-ink"}: Props){
     const safeValue = Number.isFinite(value) ? Math.min(100, Math.max(0, value)) : 0;
     return(
-        <div className={`group relative h-4 w-full cursor-pointer ${className}`}>
+        <div className={`group relative h-4 w-full cursor-pointer overflow-x-hidden ${className}`}>
 
             {/* Background Line */}
             <div className={`absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-white`}></div>
